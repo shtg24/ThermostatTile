@@ -8,7 +8,7 @@ Alle AHC-Variablen werden direkt im Konfigurationsformular der Instanz zugewiese
 ## Installation
 
 1. **Module-Store** öffnen → „Modul-URL hinzufügen"
-2. URL eingeben: `https://github.com/shthg24/ThermostatTile`
+2. URL eingeben: `https://github.com/shtg24/ThermostatTile`
 3. Modul installieren
 4. Neue **ThermostatTile**-Instanz anlegen
 5. Im Konfigurationsformular die AHC-Variablen zuweisen
