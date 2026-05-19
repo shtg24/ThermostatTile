@@ -3,5 +3,8 @@
   "author": "shtg24",
   "name": "ThermostatTile",
   "url": "https://github.com/shtg24/ThermostatTile",
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "compatibility": {
+    "version": ">=7.0"
+  }
 }
