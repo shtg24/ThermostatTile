@@ -1,0 +1,273 @@
+{
+  "elements": [
+    {
+      "type": "ExpansionPanel",
+      "caption": "Temperaturen",
+      "expanded": true,
+      "items": [
+        {
+          "type": "SelectVariable",
+          "name": "TargetTemperatureID",
+          "caption": "Solltemperatur (AHC Soll-Wert, Float)",
+          "validVariableTypes": [2]
+        },
+        {
+          "type": "SelectVariable",
+          "name": "ActualTemperatureID",
+          "caption": "Isttemperatur (Raumfühler, Float)",
+          "validVariableTypes": [2]
+        },
+        {
+          "type": "NumberSpinner",
+          "name": "TempMin",
+          "caption": "Minimum Solltemperatur (°C)",
+          "digits": 1,
+          "minimum": 4,
+          "maximum": 15,
+          "suffix": " °C"
+        },
+        {
+          "type": "NumberSpinner",
+          "name": "TempMax",
+          "caption": "Maximum Solltemperatur (°C)",
+          "digits": 1,
+          "minimum": 16,
+          "maximum": 35,
+          "suffix": " °C"
+        },
+        {
+          "type": "NumberSpinner",
+          "name": "TempStep",
+          "caption": "Schrittweite +/- Tasten (°C)",
+          "digits": 1,
+          "minimum": 0.1,
+          "maximum": 2.0,
+          "suffix": " °C"
+        }
+      ]
+    },
+    {
+      "type": "ExpansionPanel",
+      "caption": "Heizung / Modus",
+      "expanded": true,
+      "items": [
+        {
+          "type": "SelectVariable",
+          "name": "HeatingModeID",
+          "caption": "Betriebsmodus (AHC HeatingMode, Integer)",
+          "validVariableTypes": [1]
+        },
+        {
+          "type": "Label",
+          "caption": "Moduswerte: 0=Aus, 1=Heizen, 2=Kühlen, 3=Eco, 4=Boost (je nach AHC-Profil anpassen)"
+        },
+        {
+          "type": "List",
+          "name": "ModeMapping",
+          "caption": "Modus-Zuordnung",
+          "rowCount": 5,
+          "add": true,
+          "delete": true,
+          "columns": [
+            {
+              "caption": "Wert",
+              "name": "Value",
+              "width": "80px",
+              "edit": { "type": "NumberSpinner", "digits": 0 }
+            },
+            {
+              "caption": "Bezeichnung",
+              "name": "Label",
+              "width": "140px",
+              "edit": { "type": "ValidationTextBox" }
+            },
+            {
+              "caption": "Farbe",
+              "name": "Color",
+              "width": "160px",
+              "edit": {
+                "type": "Select",
+                "options": [
+                  { "caption": "Heizen (orange)", "value": "heat" },
+                  { "caption": "Kühlen (blau)",   "value": "cold" },
+                  { "caption": "Eco (grün)",       "value": "eco"  },
+                  { "caption": "Aus (grau)",        "value": "off"  }
+                ]
+              }
+            }
+          ],
+          "values": [
+            { "Value": 0, "Label": "Aus",    "Color": "off"  },
+            { "Value": 1, "Label": "Heizen", "Color": "heat" },
+            { "Value": 2, "Label": "Kühlen", "Color": "cold" },
+            { "Value": 3, "Label": "Eco",    "Color": "eco"  },
+            { "Value": 4, "Label": "Boost",  "Color": "heat" }
+          ]
+        },
+        {
+          "type": "CheckBox",
+          "name": "AllowTempChange",
+          "caption": "Solltemperatur über Kachel änderbar"
+        },
+        {
+          "type": "CheckBox",
+          "name": "AllowModeChange",
+          "caption": "Modus über Kachel änderbar"
+        }
+      ]
+    },
+    {
+      "type": "ExpansionPanel",
+      "caption": "Fenster / Kindersicherung",
+      "expanded": false,
+      "items": [
+        {
+          "type": "SelectVariable",
+          "name": "WindowOpenID",
+          "caption": "Fensterkontakt offen (Boolean, TRUE = offen)",
+          "validVariableTypes": [0]
+        },
+        {
+          "type": "SelectVariable",
+          "name": "LockID",
+          "caption": "Kindersicherung aktiv (Boolean, TRUE = gesperrt)",
+          "validVariableTypes": [0]
+        }
+      ]
+    },
+    {
+      "type": "ExpansionPanel",
+      "caption": "Luftqualität",
+      "expanded": false,
+      "items": [
+        {
+          "type": "SelectVariable",
+          "name": "HumidityID",
+          "caption": "Luftfeuchtigkeit (Float, %)",
+          "validVariableTypes": [2]
+        },
+        {
+          "type": "SelectVariable",
+          "name": "CO2ID",
+          "caption": "CO₂-Wert (Float oder Integer, ppm)",
+          "validVariableTypes": [1, 2]
+        }
+      ]
+    },
+    {
+      "type": "ExpansionPanel",
+      "caption": "Ventil / Aktor",
+      "expanded": false,
+      "items": [
+        {
+          "type": "SelectVariable",
+          "name": "ValvePositionID",
+          "caption": "Ventilstellung / Öffnungsgrad (Float, %)",
+          "validVariableTypes": [2]
+        },
+        {
+          "type": "SelectVariable",
+          "name": "ActuatorStateID",
+          "caption": "Aktor-Status (Boolean, TRUE = Heizung aktiv)",
+          "validVariableTypes": [0]
+        }
+      ]
+    },
+    {
+      "type": "ExpansionPanel",
+      "caption": "Boost / Abwesenheit",
+      "expanded": false,
+      "items": [
+        {
+          "type": "SelectVariable",
+          "name": "BoostActiveID",
+          "caption": "Boost aktiv (Boolean)",
+          "validVariableTypes": [0]
+        },
+        {
+          "type": "SelectVariable",
+          "name": "BoostDurationID",
+          "caption": "Boost verbleibende Zeit (Integer, Minuten)",
+          "validVariableTypes": [1]
+        },
+        {
+          "type": "SelectVariable",
+          "name": "PresenceID",
+          "caption": "Präsenz / Anwesenheit (Boolean, TRUE = anwesend)",
+          "validVariableTypes": [0]
+        },
+        {
+          "type": "SelectVariable",
+          "name": "AbsenceOffsetID",
+          "caption": "Absenkwert bei Abwesenheit (Float, °C)",
+          "validVariableTypes": [2]
+        }
+      ]
+    },
+    {
+      "type": "ExpansionPanel",
+      "caption": "Wochenplan",
+      "expanded": false,
+      "items": [
+        {
+          "type": "SelectVariable",
+          "name": "ScheduleActiveID",
+          "caption": "Wochenplan aktiv (Boolean)",
+          "validVariableTypes": [0]
+        },
+        {
+          "type": "SelectVariable",
+          "name": "NextSwitchTimeID",
+          "caption": "Nächster Schaltzeitpunkt (Integer, Unix-Timestamp)",
+          "validVariableTypes": [1]
+        },
+        {
+          "type": "SelectVariable",
+          "name": "NextSwitchTempID",
+          "caption": "Temperatur beim nächsten Schaltpunkt (Float, °C)",
+          "validVariableTypes": [2]
+        }
+      ]
+    },
+    {
+      "type": "ExpansionPanel",
+      "caption": "Außentemperatur",
+      "expanded": false,
+      "items": [
+        {
+          "type": "SelectVariable",
+          "name": "OutdoorTempID",
+          "caption": "Außentemperatur (Float, °C)",
+          "validVariableTypes": [2]
+        }
+      ]
+    },
+    {
+      "type": "ExpansionPanel",
+      "caption": "Darstellung",
+      "expanded": true,
+      "items": [
+        {
+          "type": "ValidationTextBox",
+          "name": "RoomName",
+          "caption": "Raumname"
+        },
+        {
+          "type": "ValidationTextBox",
+          "name": "RoomSubtitle",
+          "caption": "Untertitel (z.B. Erdgeschoss · Zone A)"
+        },
+        {
+          "type": "NumberSpinner",
+          "name": "UpdateInterval",
+          "caption": "Aktualisierungsintervall (Sekunden)",
+          "digits": 0,
+          "minimum": 5,
+          "maximum": 3600,
+          "suffix": " s"
+        }
+      ]
+    }
+  ],
+  "actions": []
+}
